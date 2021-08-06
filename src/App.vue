@@ -2,18 +2,21 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header/>
+    <Table/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
+import Table from './components/Table.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Header
+    Header,
+    Table
   }
 }
 </script>
