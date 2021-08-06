@@ -28,11 +28,11 @@
 
 <script>
 export default {
-    name:'Table',
+    name: 'Table',
     data(){
         return{
             users:[
-              /*   {
+                {
                     createdAt: "2021-07-29T06:59:27.961Z",
                     name: "Robert Frami",
                     avatar: "https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg",
@@ -45,14 +45,15 @@ export default {
                     avatar: "https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg",
                     email: "Jon.Doe22@outlook.com",
                     id:"5"
-                } */
+                } 
             ]
         }
     }
 }
 </script>
 
-<style scoped>
+<style>
+
 .avatar-img{
     height: 80px;
 }
@@ -70,7 +71,7 @@ td, th{
     padding:10px 10px
 }
 
-button{
+.actions-table-data button{
     display: block;
     justify-content: center;
     margin: 15px auto;

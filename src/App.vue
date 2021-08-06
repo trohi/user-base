@@ -3,6 +3,7 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header/>
     <Table/>
+    <Modal/>
   </div>
 </template>
 
@@ -10,13 +11,15 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Table from './components/Table.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     Header,
-    Table
+    Table,
+    Modal
   }
 }
 </script>
