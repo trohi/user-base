@@ -4,6 +4,7 @@
     <Header/>
     <Table/>
     <Modal/>
+    <Loading/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Table from './components/Table.vue'
 import Modal from './components/Modal.vue'
+import Loading from './components/Loading.vue'
 
 export default {
   name: 'App',
@@ -19,7 +21,8 @@ export default {
     HelloWorld,
     Header,
     Table,
-    Modal
+    Modal,
+    Loading
   }
 }
 </script>

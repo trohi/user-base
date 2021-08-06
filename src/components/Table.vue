@@ -18,7 +18,7 @@
         <td>{{user.email}}</td>
         <td>{{user.createdAt}}</td>
         <td class="actions-table-data">
-            <button class="edit-button">EDIT</button>
+            <button class="edit-button" @click="openModal">EDIT</button>
             <button class="delete-button">DELETE</button>
         </td>
       </tr>
@@ -41,12 +41,17 @@ export default {
                 },
                 {
                     createdAt: "2021-04-12T05:12:22-842Y",
-                    name: "Jone Doe",
+                    name: "John Doe",
                     avatar: "https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg",
-                    email: "Jon.Doe22@outlook.com",
-                    id:"5"
+                    email: "John.Doe22@outlook.com",
+                    id: "5"
                 } 
             ]
+        }
+    },
+    methods:{
+        openModal(){
+            return this.$store.dispatch('openModal')
         }
     }
 }
@@ -64,7 +69,7 @@ table{
 }
 
 th, tr, td{
-    border:1px solid #363636
+    border:1px solid #999797
 }
 
 td, th{

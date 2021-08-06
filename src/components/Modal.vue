@@ -1,6 +1,6 @@
 <template>
-    <div id="modal">
-        <button class="close-modal-button">X</button>
+    <div id="modal" v-if="modalState">
+        <button class="close-modal-button" @click="closeModal">X</button>
       <table>
         <tr>
           <th>Avatar</th>
@@ -18,7 +18,7 @@
           <td contenteditable="true">createdAT</td>
           <td class="actions-table-data">
               <button class="save-button">SAVE</button>
-              <button class="close-button">CLOSE</button>
+              <button class="close-button" @click="closeModal">CLOSE</button>
           </td>
         </tr>
       </table>
@@ -27,7 +27,17 @@
 
 <script>
 export default {
-    name: 'Modal'
+    name: 'Modal',
+    computed:{
+        modalState(){
+            return this.$store.getters.getModalState
+        }
+    },
+    methods:{
+        closeModal(){
+            return this.$store.dispatch('closeModal')
+        }
+    }
 }
 </script>
 

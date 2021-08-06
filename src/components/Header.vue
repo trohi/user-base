@@ -5,7 +5,7 @@
       </h2>
       <form class="input-wrapper">
         <input class="header-input"/>
-        <button type="submit" class="header-button">Search</button>
+        <button type="submit" class="header-button" @submit.prevent="onSubmit">Search</button>
       </form>
     </div>
 </template>
@@ -14,6 +14,9 @@
 
 export default {
     name:'Header',
+    onSubmit(){
+        //preform search
+    }
 }
 
 </script>
