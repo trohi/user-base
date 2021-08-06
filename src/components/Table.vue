@@ -1,5 +1,5 @@
 <template>
-    <table>
+    <table v-if="users.length > 1">
       <tr>
         <th>Avatar</th>
         <th>Name</th>
@@ -23,6 +23,7 @@
         </td>
       </tr>
     </table>
+    <div class="ux-message" v-else> Use search bar to find users ...</div>
 </template>
 
 <script>
@@ -31,7 +32,7 @@ export default {
     data(){
         return{
             users:[
-                {
+              /*   {
                     createdAt: "2021-07-29T06:59:27.961Z",
                     name: "Robert Frami",
                     avatar: "https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg",
@@ -44,7 +45,7 @@ export default {
                     avatar: "https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg",
                     email: "Jon.Doe22@outlook.com",
                     id:"5"
-                }
+                } */
             ]
         }
     }
@@ -91,5 +92,11 @@ button:hover{
 .delete-button{
     background-color: rgb(158, 8, 8);
     color: white
+}
+
+.ux-message{
+    margin-top:100px;
+    font-size:22px;
+    color: rgba(20, 19, 19, 0.5)
 }
 </style>
