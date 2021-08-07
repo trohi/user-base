@@ -4,7 +4,7 @@
         Users CRUD
       </h2>
       <form class="input-wrapper">
-        <input v-model="userInput" class="header-input"/>
+        <input v-model="userInput" placeholder="Search by name" class="header-input"/>
         <button type="submit" class="header-button" @click.prevent="onSubmit">Search</button>
       </form>
     </div>
@@ -27,15 +27,13 @@ export default {
     },
     methods:{
         onSubmit(){
-            const input = this.userInput.toLowerCase()
             this.matchingUsers = []
-
-              this.users.forEach( user =>{
-                if(user.name.toLowerCase().indexOf(input) > -1){
+            const input = this.userInput.toLowerCase()
+            this.users.forEach( user =>{
+                if(user.name.toLowerCase().indexOf(input) > -1 ){
                     this.matchingUsers.push(user)
                 }
             })
-
             this.$store.dispatch('filterUsers', this.matchingUsers)
         }
     }

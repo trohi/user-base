@@ -1,5 +1,5 @@
 <template>
-    <table v-if="users.length > 1">
+    <table v-if="users.length >= 1">
       <tr>
         <th>Avatar</th>
         <th>Name</th>
@@ -8,7 +8,7 @@
         <th>Actions</th>
       </tr>
       <tr 
-      v-for="user in usrs"
+      v-for="user in users"
       :key="user.id"
       >
         <td>
@@ -31,22 +31,6 @@ export default {
     name: 'Table',
     data(){
         return{
-            users:[
-                {
-                    createdAt: "2021-07-29T06:59:27.961Z",
-                    name: "Robert Frami",
-                    avatar: "https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg",
-                    email: "Marshall.Turcotte53@hotmail.com",
-                    id: "4"
-                },
-                {
-                    createdAt: "2021-04-12T05:12:22-842Y",
-                    name: "John Doe",
-                    avatar: "https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg",
-                    email: "John.Doe22@outlook.com",
-                    id: "5"
-                } 
-            ]
         }
     },
     methods:{
@@ -55,7 +39,7 @@ export default {
         }
     },
     computed:{
-        usrs(){
+        users(){
             return this.$store.getters.getMatchingUsers
         }
     }
