@@ -8,7 +8,7 @@
         <th>Actions</th>
       </tr>
       <tr 
-      v-for="user in users"
+      v-for="user in usrs"
       :key="user.id"
       >
         <td>
@@ -53,6 +53,11 @@ export default {
         openModal(){
             return this.$store.dispatch('openModal')
         }
+    },
+    computed:{
+        usrs(){
+            return this.$store.getters.getMatchingUsers
+        }
     }
 }
 </script>
@@ -73,7 +78,9 @@ th, tr, td{
 }
 
 td, th{
-    padding:10px 10px
+    padding:10px 10px;
+    max-width:200px;
+    overflow:hidden
 }
 
 .actions-table-data button{

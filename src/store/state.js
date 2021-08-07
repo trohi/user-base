@@ -1,4 +1,6 @@
 export default {
     modalState: false,
-    loadingState: false
+    loadingState: false,
+    users:[],
+    matchingUsers:[]
 }

@@ -23,6 +23,9 @@ export default {
     Table,
     Modal,
     Loading
+  },
+  mounted(){
+      this.$store.dispatch('fetchUsers')
   }
 }
 </script>

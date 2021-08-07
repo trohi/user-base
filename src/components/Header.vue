@@ -4,8 +4,8 @@
         Users CRUD
       </h2>
       <form class="input-wrapper">
-        <input class="header-input"/>
-        <button type="submit" class="header-button" @submit.prevent="onSubmit">Search</button>
+        <input v-model="userInput" class="header-input"/>
+        <button type="submit" class="header-button" @click.prevent="onSubmit">Search</button>
       </form>
     </div>
 </template>
@@ -14,8 +14,30 @@
 
 export default {
     name:'Header',
-    onSubmit(){
-        //preform search
+    data(){
+        return{
+            userInput:"",
+            matchingUsers:[]
+        }
+    },
+    computed:{
+        users(){
+            return this.$store.getters.getUsers
+        }
+    },
+    methods:{
+        onSubmit(){
+            const input = this.userInput.toLowerCase()
+            this.matchingUsers = []
+
+              this.users.forEach( user =>{
+                if(user.name.toLowerCase().indexOf(input) > -1){
+                    this.matchingUsers.push(user)
+                }
+            })
+
+            this.$store.dispatch('filterUsers', this.matchingUsers)
+        }
     }
 }
 
