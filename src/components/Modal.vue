@@ -1,7 +1,6 @@
 <template>
     <div id="modal" v-if="modalState">
-        <button class="close-modal-button" @click="closeModal">X</button>
-      <table>
+      <!-- <table>
         <tr>
           <th>Avatar</th>
           <th>Name</th>
@@ -21,7 +20,27 @@
               <button class="close-button" @click="closeModal">CLOSE</button>
           </td>
         </tr>
-      </table>
+      </table> -->
+    
+        <form class="editForm">
+            <h3>User edit form</h3>
+            <hr>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="previous name">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="previous name">
+            <label for="createdAt">Created at</label>
+            <input type="text" id="createdAt" disabled placeholder="date">
+            <label for="avatar">Avatar</label>
+            <input type="text" id="avatar" placeholder="paste image's URL">
+            <img src="">
+            <hr>
+            <div class="editButtonsWrapper">
+                <button class="editDismiss">DISMISS</button>
+                <button class="editSave">SAVE</button>
+            </div>
+        </form>
+    
     </div>
 </template>
 
@@ -57,34 +76,58 @@ export default {
     background-color: rgb(0, 0, 0, 0.8);    
 }
 
-table{
-    background-color: #ffc1cd;
+
+.editForm{
+    display: flex;
+    flex-direction: column;
+    width:40%;
+    margin: 4vh auto;
+    background:#ffc1cd;
+    padding: 20px 20px;
+    border-radius: 50px;
+    max-height: 600px;
 }
 
-th, td{
-    padding: 40px
+hr{
+    width:100%
 }
 
-.save-button{
-    border: 0px;
-    background-color: #0d5f21;
-    color:white
+.editForm input{
+    width:60%;
+    margin: 10px auto;
+    height:24px;
+    line-height: 24px
 }
 
-.close-button{
-    background-color: #dd1b42;  
-    color:white
+.editForm input:focus{
+    transform:scale(1.1)
 }
 
-.close-modal-button{
-    border-radius: 50%;
-    border: 0px;
-    position: fixed;
-    top: 23%;
-    left: 74%;
-    color: #363636;
-    background-color: white;
-    font-weight: bold;
+.editForm label{
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom: 0px;
+    margin-top: 12px
 }
 
+.editButtonsWrapper{
+    margin-left:auto;
+    padding:10px 0px
+}
+
+.editButtonsWrapper button{
+    padding:10px;
+    margin-left:10px;
+    border:0px;
+    color: white;
+    border-radius: 5px;
+}
+
+.editDismiss{
+    background-color:red
+}
+
+.editSave{
+    background-color:green
+}
 </style>
