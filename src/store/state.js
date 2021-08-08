@@ -1,6 +1,9 @@
 export default {
+    // initializing starting value
     modalState: false,
     loadingState: false,
     users:[],
-    matchingUsers:[]
+    matchingUsers:[],
+    userEdit:{},
+    userInput:''
 }

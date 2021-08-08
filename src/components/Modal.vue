@@ -1,43 +1,27 @@
 <template>
     <div id="modal" v-if="modalState">
-      <!-- <table>
-        <tr>
-          <th>Avatar</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Created at</th>
-          <th>Actions</th>
-        </tr>
-        <tr>
-          <td>
-              <img contenteditable="false" class="avatar-img" src="https://cdn.fakercloud.com/avatars/codysanfilippo_128.jpg">
-          </td>
-          <td contenteditable="true">Name</td>
-          <td contenteditable="true">Email</td>
-          <td contenteditable="true">createdAT</td>
-          <td class="actions-table-data">
-              <button class="save-button">SAVE</button>
-              <button class="close-button" @click="closeModal">CLOSE</button>
-          </td>
-        </tr>
-      </table> -->
-    
-        <form class="editForm">
-            <h3>User edit form</h3>
+        <form class="editForm" @submit.stop.prevent>
+            <h3>Edit user: {{User.name}}</h3>
             <hr>
             <label for="name">Name</label>
-            <input type="text" id="name" placeholder="previous name">
+            <input type="text" id="name" v-model="name"  @keydown.enter.prevent>
             <label for="email">Email</label>
-            <input type="text" id="email" placeholder="previous name">
+            <input type="text" id="email" v-model="email"  @keydown.enter.prevent>
             <label for="createdAt">Created at</label>
-            <input type="text" id="createdAt" disabled placeholder="date">
+            <input type="text" id="createdAt" disabled :value="User.createdAt">
             <label for="avatar">Avatar</label>
-            <input type="text" id="avatar" placeholder="paste image's URL">
-            <img src="">
+            <input type="text" id="avatar" v-model="editedAvatar" placeholder="paste image's URL"  @keydown.enter.prevent>
+            <div v-if="editedAvatar">
+                <img :src="editedAvatar">
+            </div>
+            <div v-else>
+                <img :src="User.avatar">
+            </div>
+            
             <hr>
             <div class="editButtonsWrapper">
-                <button class="editDismiss">DISMISS</button>
-                <button class="editSave">SAVE</button>
+                <button class="editDismiss" @click="closeModal">DISMISS</button> 
+                <button class="editSave" @click="saveChanges">SAVE</button>
             </div>
         </form>
     
@@ -47,14 +31,44 @@
 <script>
 export default {
     name: 'Modal',
+    data(){
+        return{
+            editedAvatar: '',
+            createdAt: '',
+            name: '',
+            email: ''
+        }
+    },
     computed:{
         modalState(){
             return this.$store.getters.getModalState
+        },
+        User(){
+            //this computed propery has to functions
+            //1# populate data property with store's data
+            //2# returning user that is to be edited
+            //populating data with store data
+            this.editedAvatar = this.$store.getters.getUserToEdit.avatar
+            this.createdAt = this.$store.getters.getUserToEdit.createdAt
+            this.name = this.$store.getters.getUserToEdit.name
+            this.email = this.$store.getters.getUserToEdit.email
+            //returning specified user for further edit
+            return this.$store.getters.getUserToEdit
         }
     },
     methods:{
         closeModal(){
             return this.$store.dispatch('closeModal')
+        },
+        saveChanges(){
+                this.$store.dispatch('updateUser',{
+                createdAt: this.createdAt,
+                name: this.name,
+                avatar: this.editedAvatar,
+                email: this.email,
+                id: this.User.id
+            })
+            this.closeModal()
         }
     }
 }
@@ -75,7 +89,6 @@ export default {
     background-color: rgb(0, 0, 0);
     background-color: rgb(0, 0, 0, 0.8);    
 }
-
 
 .editForm{
     display: flex;
@@ -108,6 +121,10 @@ hr{
     margin-left:auto;
     margin-bottom: 0px;
     margin-top: 12px
+}
+
+img{
+    width:100px
 }
 
 .editButtonsWrapper{

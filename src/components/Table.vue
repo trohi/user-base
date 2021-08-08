@@ -18,8 +18,8 @@
         <td>{{user.email}}</td>
         <td>{{user.createdAt}}</td>
         <td class="actions-table-data">
-            <button class="edit-button" @click="openModal">EDIT</button>
-            <button class="delete-button">DELETE</button>
+            <button class="edit-button" @click="openModal(user)">EDIT</button>
+            <button class="delete-button" @click="deleteUser(user)">DELETE</button>
         </td>
       </tr>
     </table>
@@ -34,8 +34,15 @@ export default {
         }
     },
     methods:{
-        openModal(){
-            return this.$store.dispatch('openModal')
+        openModal(user){
+            // this function calls two actions,
+            // passing user that is to be edited to store
+            this.$store.dispatch('passUserToEdit',user)
+            // opening modal(changing boolean propery of state's modal data)
+            this.$store.dispatch('openModal')
+        },
+        deleteUser(user){
+            this.$store.dispatch('deleteUser', user)
         }
     },
     computed:{
@@ -63,8 +70,8 @@ th, tr, td{
 
 td, th{
     padding:10px 10px;
-    max-width:200px;
-    overflow:hidden
+    max-width:300px;
+    overflow: hidden;
 }
 
 .actions-table-data button{

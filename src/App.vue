@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header/>
     <Table/>
     <Modal/>
@@ -9,7 +8,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Table from './components/Table.vue'
 import Modal from './components/Modal.vue'
@@ -18,7 +16,8 @@ import Loading from './components/Loading.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    // all components used in this app
+    // are registered and listed here
     Header,
     Table,
     Modal,

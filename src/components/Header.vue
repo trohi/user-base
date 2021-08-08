@@ -27,14 +27,7 @@ export default {
     },
     methods:{
         onSubmit(){
-            this.matchingUsers = []
-            const input = this.userInput.toLowerCase()
-            this.users.forEach( user =>{
-                if(user.name.toLowerCase().indexOf(input) > -1 ){
-                    this.matchingUsers.push(user)
-                }
-            })
-            this.$store.dispatch('filterUsers', this.matchingUsers)
+            this.$store.dispatch('filterUsers', this.userInput.toLowerCase())
         }
     }
 }
