@@ -81,7 +81,7 @@ export default {
     display: block;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 2vh;
     left: 0;
     top: 0;
     width: 100%;
