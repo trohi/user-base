@@ -11,6 +11,7 @@
             <input type="text" id="createdAt" disabled :value="User.createdAt">
             <label for="avatar">Avatar</label>
             <input type="text" id="avatar" v-model="editedAvatar" placeholder="paste image's URL"  @keydown.enter.prevent>
+            <p class="ui-hint">paste image URL</p>
             <div v-if="editedAvatar">
                 <img :src="editedAvatar">
             </div>
@@ -114,6 +115,12 @@ hr{
 
 .editForm input:focus{
     transform:scale(1.1)
+}
+
+.ui-hint{
+    font-size: 12px;
+    margin-top: 0px;
+    color:green
 }
 
 .editForm label{
