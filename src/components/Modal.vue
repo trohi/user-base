@@ -99,7 +99,7 @@ export default {
     background:#ffc1cd;
     padding: 20px 20px;
     border-radius: 50px;
-    max-height: 600px;
+    max-height: 800px;
 }
 
 hr{
